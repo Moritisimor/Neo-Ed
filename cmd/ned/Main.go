@@ -5,27 +5,38 @@ import (
 	"strings"
 
 	"github.com/Moritisimor/EpsilonFetch/pkg/color"
+	"github.com/Moritisimor/Neo-Ed/internal/sigwatchers"
 	"github.com/Moritisimor/Neo-Ed/internal/tokenizing"
 	"github.com/chzyer/readline"
 )
 
 func main() {
-	reader, err := readline.NewEx(&readline.Config {
+	sigwatchers.StartSigTermWatcher()
+
+	
+
+	reader, creationErr := readline.NewEx(&readline.Config {
 		Prompt: color.SprintBlue("CMD >> "),
 		InterruptPrompt: "^C",
 	})
 
-	if err != nil {
-		log.Fatal(err.Error())
+	if creationErr != nil {
+		log.Fatal(creationErr.Error())
 	}
 
 	for {
 		rawCmd, readErr := reader.Readline()
 		if readErr != nil {
-			log.Fatal(readErr.Error())
+			color.PrintBlueln("Input interrupted. Try again.")
+			continue
 		}
 
 		parts := strings.Split(rawCmd, " ")
+		if parts[0] == "q" {
+			color.PrintBlueln("Bye!")
+			return
+		}
+
 		tokenizing.Dispatch(parts)
 	}
 }

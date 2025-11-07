@@ -10,7 +10,14 @@ func Dispatch(tokens []string) {
 	default:
 		color.PrintRedln("Unknown command: " + tokens[0])
 
-	case "help":
+	case "":
+		// Do nothing.
+
+	case "help", "h":
 		cmds.PrintHelp()
+
+	case "clear", "clr":
+		cmds.Clear()
+	
 	}
 }
