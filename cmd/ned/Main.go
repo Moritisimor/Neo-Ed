@@ -1,22 +1,37 @@
 package main
 
 import (
+	"fmt"
 	"log"
+	"os"
 	"strings"
 
 	"github.com/Moritisimor/EpsilonFetch/pkg/color"
+	"github.com/Moritisimor/Neo-Ed/internal/helpers"
 	"github.com/Moritisimor/Neo-Ed/internal/sigwatchers"
-	"github.com/Moritisimor/Neo-Ed/internal/tokenizing"
+	"github.com/Moritisimor/Neo-Ed/internal/dispatch"
 	"github.com/chzyer/readline"
 )
 
 func main() {
+	if len(os.Args) < 2 {
+		color.PrintBlueln("Usage: ned <Target File>")
+		color.PrintGreenln("Or run the 'h' command!")
+		return
+	}
+
+	fileName := os.Args[1]
+	openedFile, openErr := os.Open(fileName)
+	if openErr != nil {
+		log.Fatal(openErr)
+	}
+
+	writeBuf, initSize := helpers.ReadFileToBuffer(openedFile)
+	color.PrintBlueln(fmt.Sprintf("Opened %d lines.", initSize))
+
 	sigwatchers.StartSigTermWatcher()
-
-	
-
 	reader, creationErr := readline.NewEx(&readline.Config {
-		Prompt: color.SprintBlue("CMD >> "),
+		Prompt: color.SprintBlue(fmt.Sprintf("[%s] CMD >> ", fileName)),
 		InterruptPrompt: "^C",
 	})
 
@@ -37,6 +52,6 @@ func main() {
 			return
 		}
 
-		tokenizing.Dispatch(parts)
+		dispatch.Pipe(&writeBuf, parts)
 	}
 }
