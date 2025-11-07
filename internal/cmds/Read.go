@@ -5,13 +5,15 @@ import (
 	"strconv"
 
 	"github.com/Moritisimor/EpsilonFetch/pkg/color"
+	"github.com/Moritisimor/Neo-Ed/internal/helpers"
 )
 
 func Read(buf*[]string, args []string) {
 	if len(args) < 1 {
-		for _, l := range(*buf) {
-			fmt.Println(l)
+		for i, l := range(*buf) {
+			helpers.PrintFileLine(i + 1, l)
 		}
+
 		return
 	}
 
@@ -49,6 +51,6 @@ func Read(buf*[]string, args []string) {
 	}
 
 	for i := rangeStart - 1; i <= rangeEnd - 1; i++ {
-		fmt.Println((*buf)[i])
+		fmt.Printf("%d | %s\n", i + 1, (*buf)[i])
 	}
 }
