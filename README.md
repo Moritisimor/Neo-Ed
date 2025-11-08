@@ -6,6 +6,9 @@ This project aims to create an editor which is fully open source, easy to use an
 
 In its core, it works a bit like a shell, where it takes commands and arguments and does something based on the input, except it doesn't use those commands to directly interact with the OS, but to read and manipulate files.
 
+## Curent Version
+The current version is ```v0.7.1```
+
 ## Planned features
 - Add an insert command for inserting text between lines
 - Add a find command for finding text
@@ -38,7 +41,7 @@ And finally compile it:
 ```bash
 go build -ldflags="-s -w" .
 ```
-(The -ldflags are for making the compiled binary smaller. You can keep those out if you want to.)
+(The ```-ldflags``` are for making the compiled binary smaller. You can keep those out if you want to.)
 
 ## How to use
 To use it you simply run ```ned``` followed by the name of the file:
@@ -56,6 +59,12 @@ After that, you should be greeted by a prompt which looks like this:
 The text in the square brackets shows you what file you're editing.
 
 ## Commands
+### Help
+```bash
+[File] Ned >> h
+```
+This command will print helpful text to the terminal.
+
 ### Append
 ```bash
 [File] Ned >> a
