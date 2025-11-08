@@ -5,7 +5,7 @@ import (
 	"github.com/Moritisimor/Neo-Ed/internal/cmds"
 )
 
-func Pipe(buf *[]string, args []string) {
+func Pipe(buf *[]string, args []string, fileName string) {
 	switch args[0] {
 	default:
 		color.PrintRedln("Unknown command: " + args[0])
@@ -18,6 +18,12 @@ func Pipe(buf *[]string, args []string) {
 
 	case "r":
 		cmds.Read(buf, args[1:])
+
+	case "a":
+		cmds.Append(buf)
+
+	case "w":
+		cmds.Write(buf, fileName)
 
 	case "clear", "clr":
 		cmds.Clear()

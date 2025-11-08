@@ -10,7 +10,6 @@ import (
 	"github.com/Moritisimor/Neo-Ed/internal/helpers"
 	"github.com/Moritisimor/Neo-Ed/internal/sigwatchers"
 	"github.com/Moritisimor/Neo-Ed/internal/dispatch"
-	"github.com/chzyer/readline"
 )
 
 func main() {
@@ -30,14 +29,7 @@ func main() {
 	color.PrintBlueln(fmt.Sprintf("Opened %d lines.", initSize))
 
 	sigwatchers.StartSigTermWatcher()
-	reader, creationErr := readline.NewEx(&readline.Config {
-		Prompt: color.SprintBlue(fmt.Sprintf("[%s] CMD >> ", fileName)),
-		InterruptPrompt: "^C",
-	})
-
-	if creationErr != nil {
-		log.Fatal(creationErr.Error())
-	}
+	reader := helpers.CreateReader(color.SprintBlue(fmt.Sprintf("[%s] Ned >> ", fileName)))
 
 	for {
 		rawCmd, readErr := reader.Readline()
@@ -46,12 +38,12 @@ func main() {
 			continue
 		}
 
-		parts := strings.Split(rawCmd, " ")
+		parts := strings.Split(strings.TrimSpace(rawCmd), " ")
 		if parts[0] == "q" {
 			color.PrintBlueln("Bye!")
 			return
 		}
 
-		dispatch.Pipe(&writeBuf, parts)
+		dispatch.Pipe(&writeBuf, parts, fileName)
 	}
 }
