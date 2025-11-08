@@ -36,8 +36,9 @@ cd Neo-Ed/cmd/ned
 
 And finally compile it:
 ```bash
-go build -ldflags="-s -w" . # Linker Flags for smaller binary size
+go build -ldflags="-s -w" .
 ```
+(The -ldflags are for making the compiled binary smaller. You can keep those out if you want to.)
 
 ## How to use
 To use it you simply run ```ned``` followed by the name of the file:
