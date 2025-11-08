@@ -56,6 +56,6 @@ func Read(buf*[]string, args []string) {
 	}
 
 	for i := rangeStart - 1; i <= rangeEnd - 1; i++ {
-		fmt.Printf("%d | %s\n", i + 1, (*buf)[i])
+		helpers.PrintFileLine(i, (*buf)[i])
 	}
 }
