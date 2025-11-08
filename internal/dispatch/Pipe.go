@@ -28,6 +28,9 @@ func Pipe(buf *[]string, args []string, fileName string) {
 	case "e":
 		cmds.Edit(buf, args)
 
+	case "x":
+		cmds.Execute(args)
+
 	case "clear", "clr":
 		cmds.Clear()
 	}

@@ -12,7 +12,7 @@ func StartSigTermWatcher()  {
 	signal.Notify(sigTermWatcher, os.Interrupt) 
 	go func() {
 		for range(sigTermWatcher) {
-			color.PrintRedln("Please don't use Ctrl + C for quitting! Use the 'q' or 'q!' command instead.")
+			color.PrintRedln("Got Interrupt Signal.")
 		} 
 	}()
 }
