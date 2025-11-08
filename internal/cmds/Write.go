@@ -16,5 +16,5 @@ func Write(buf *[]string, fileName string) {
 		return
 	}
 
-	color.PrintGreen(fmt.Sprintf("Successfully wrote buffer to '%s'", fileName))
+	color.PrintGreenln(fmt.Sprintf("Successfully wrote buffer to '%s'", fileName))
 }
