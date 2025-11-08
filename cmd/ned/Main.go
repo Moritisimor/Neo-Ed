@@ -19,7 +19,7 @@ func main() {
 	}
 
 	fileName := os.Args[1]
-	openedFile := helpers.EnsureExistance(fileName)
+	openedFile := helpers.EnsureExistence(fileName)
 	if helpers.IsDir(openedFile) {
 		color.PrintRedln(fmt.Sprintf("Cannot Open '%s'! (Is a Directory)", fileName))
 		return
