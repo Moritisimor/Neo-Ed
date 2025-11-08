@@ -1,5 +1,5 @@
 # Neo-Ed
-The UNIX Editor Ed but modernized.
+The UNIX Editor Ed, but modernized.
 
 ## What is this project about?
 This project aims to create an editor which is fully open source, easy to use and Ed-Like. As such, it is released under the MIT License and command- and line-based.
@@ -11,14 +11,57 @@ In its core, it works a bit like a shell, where it takes commands and arguments 
 - Add a find command for finding text
 - Add a replace command for replacing text with other text
 
+## How to compile
+To compile Neo-Ed from source you will need a Go-Compiler, preferably the latest. You can download one [here](https://go.dev/ "Official Go Website")
+
+### With ```go install```
+You can install Neo-Ed with the ```go install``` command like so:
+```bash
+go install github.com/Moritisimor/Neo-Ed/cmd/ned@latest
+```
+You can also use another version if you'd like.
+
+After that, it will be put into the ```bin``` folder of your ```GOROOT```
+
+### Manually
+First, you'll need to clone this Repository:
+```bash
+git clone https://github.com/Moritisimor/Neo-Ed
+```
+
+Then, cd into where the Main Program's code lies:
+```bash
+cd Neo-Ed/cmd/ned
+```
+
+And finally compile it:
+```bash
+go build -ldflags="-s -w" . # Linker Flags for smaller binary size
+```
+
+## How to use
+To use it you simply run ```ned``` followed by the name of the file:
+```console
+ned File
+```
+
+If the file doesn't exist, Ned will create it for you.
+
+After that, you should be greeted by a prompt which looks like this:
+
+```bash
+[File] Ned >>
+```
+The text in the square brackets shows you what file you're editing.
+
 ## Commands
 ### Append
-```console
+```bash
 [File] Ned >> a
 ```
 This command will append text that the user inputs to the end of the file. It uses a ```.``` as its termination symbol. So appending text to a file would look like this:
 
-```console
+```bash
 [File] Ned >> a
 APPEND >> This is a simple demonstration
 APPEND >> For the append command!
@@ -29,12 +72,12 @@ APPEND >> .
 ```
 
 ### Read
-```console
+```bash
 [File] Ned >> r
 ```
 This command will read a file. It will either read a specified line, read a specified range or the entire file. To read an entire file:
 
-```console
+```bash
 [File] Ned >> r
 1     | This is a simple demonstration
 2     | For the append command!
@@ -44,14 +87,14 @@ This command will read a file. It will either read a specified line, read a spec
 ```
 
 You can also only read a specified line like this:
-```console
+```bash
 [File] Ned >> r 2
 2     | For the append command!
 [File] Ned >>
 ```
 
 Or you can read a range like this:
-```console
+```bash
 [File] Ned >> r 1 3
 1     | This is a simple demonstration
 2     | For the append command!
@@ -60,7 +103,7 @@ Or you can read a range like this:
 ```
 
 ### Write
-```console
+```bash
 [File] Ned >> w
 Successfully wrote buffer to 'File'
 [File] Ned >>
@@ -69,7 +112,7 @@ Successfully wrote buffer to 'File'
 This command writes the internal buffer, which the editor stores, to the file, essentially saving what you wrote.
 
 ### Edit
-```console
+```bash
 [File] Ned >> e 2
 EDIT 2 >> This is what editing a line looks like!
 [File] Ned >> 
@@ -79,7 +122,7 @@ Unlike the ```Append``` command, ```Edit``` does not use a termination symbol an
 Edit also inserts what was already in the line into the input, making small edits a lot more comfortable.
 
 ### Execute
-```console
+```bash
 [File] Ned >> x echo hello world!
 hello world!
 [File] Ned >>
@@ -88,13 +131,13 @@ hello world!
 This command is used for executing commands directly from the operating system. It's mainly meant for streamlining development, so that you don't need to exit the editor to, for example, compile or run the program. But of course, it can be used for other things.
 
 ### Clear
-```console
+```bash
 [File] Ned >> clear
 ```
 This command just clears the screen.
 
 ### Quit
-```console
+```bash
 [File] Ned >> q
 Bye!
 ```
