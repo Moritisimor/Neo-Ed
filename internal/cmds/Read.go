@@ -21,7 +21,7 @@ func Read(buf*[]string, args []string) {
 	for i, arg := range(args) {
 		parsedArg, parseErr := strconv.ParseInt(arg, 0, 64)
 		if parseErr != nil {
-			color.PrintRedln("Expected integer, got '" + arg + "' instead.")
+			color.PrintRedln(fmt.Sprintf("Expected a number, got '%s' instead", arg))
 			return
 		}
 

@@ -13,7 +13,7 @@ func StartWriteLoop(r *readline.Instance) []string {
 	for {
 		tempbuf, err := r.Readline()
 		if err != nil {
-			color.PrintRedln("Input interrupted. Try again.")
+			color.PrintRedln("Input interrupted.")
 			return []string {}
 		}
 

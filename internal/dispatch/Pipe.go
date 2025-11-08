@@ -25,8 +25,10 @@ func Pipe(buf *[]string, args []string, fileName string) {
 	case "w":
 		cmds.Write(buf, fileName)
 
+	case "e":
+		cmds.Edit(buf, args)
+
 	case "clear", "clr":
 		cmds.Clear()
-	
 	}
 }
