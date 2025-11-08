@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"log"
 	"os"
 	"strings"
 
@@ -20,9 +19,10 @@ func main() {
 	}
 
 	fileName := os.Args[1]
-	openedFile, openErr := os.Open(fileName)
-	if openErr != nil {
-		log.Fatal(openErr)
+	openedFile := helpers.EnsureExistance(fileName)
+	if helpers.IsDir(openedFile) {
+		color.PrintRedln(fmt.Sprintf("Cannot Open '%s'! (Is a Directory)", fileName))
+		return
 	}
 
 	writeBuf, initSize := helpers.ReadFileToBuffer(openedFile)
