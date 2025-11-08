@@ -25,6 +25,11 @@ func Edit(buf *[]string, args []string) {
 		return
 	}
 
+	if line < 1 {
+		color.PrintRedln("Cannot access indices which are below 1!")
+		return
+	}
+
 	r := helpers.CreateReader(color.SprintMagenta(fmt.Sprintf("EDIT %d >> ", line)))
 	r.WriteStdin([]byte((*buf)[line - 1]))
 

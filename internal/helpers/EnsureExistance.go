@@ -20,7 +20,7 @@ func IsDir(entry *os.File) bool {
 func EnsureExistance(entryName string) *os.File {
 	file, err := os.Open(entryName)
 	if err != nil {
-		color.PrintBlueln(fmt.Sprintf("'%s' does not exist, so I will create it", entryName))
+		color.PrintBlueln(fmt.Sprintf("'%s' does not exist, so I will create it.", entryName))
 	} else {
 		return file
 	}

@@ -9,6 +9,11 @@ import (
 )
 
 func Read(buf*[]string, args []string) {
+	if len(*buf) < 1 {
+		color.PrintYellowln("Empty File!")
+		return
+	}
+
 	if len(args) < 1 {
 		for i, l := range(*buf) {
 			helpers.PrintFileLine(i + 1, l)
