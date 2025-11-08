@@ -1,0 +1,9 @@
+# IDE-Specific
+.vscode
+.idea
+
+# Binaries
+bin
+
+# Scripts
+scripts
