@@ -8,7 +8,7 @@ import (
 	"github.com/Moritisimor/Neo-Ed/internal/helpers"
 )
 
-func Read(buf*[]string, args []string) {
+func Read(buf *[]string, args []string) {
 	if len(*buf) < 1 {
 		color.PrintYellowln("Empty File!")
 		return
@@ -56,6 +56,6 @@ func Read(buf*[]string, args []string) {
 	}
 
 	for i := rangeStart - 1; i <= rangeEnd - 1; i++ {
-		helpers.PrintFileLine(i, (*buf)[i])
+		helpers.PrintFileLine(i + 1, (*buf)[i])
 	}
 }

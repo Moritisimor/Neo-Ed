@@ -28,6 +28,9 @@ func Pipe(buf *[]string, args []string, fileName string) {
 	case "e":
 		cmds.Edit(buf, args)
 
+	case "d":
+		cmds.Delete(buf, args[1:])
+
 	case "x":
 		cmds.Execute(args)
 

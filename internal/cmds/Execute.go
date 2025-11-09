@@ -9,6 +9,11 @@ import (
 )
 
 func Execute(args []string) {
+	if len(args) < 2 {
+		color.PrintRedln("Usage: x <Command> ?<Args>?")
+		return
+	}
+
 	cmd := exec.Command(args[1], args[2:]...)
 	cmd.Stdout = os.Stdout
 	cmd.Stderr = os.Stderr
