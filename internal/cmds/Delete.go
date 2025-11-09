@@ -33,6 +33,11 @@ func Delete(buf *[]string, args []string) {
 		return
 	}
 
+	if rangeEnd < rangeStart {
+		color.PrintRedln("The range end may not be smaller than the range start!")
+		return
+	}
+
 	if len(*buf) < int(rangeStart) || len(*buf) < int(rangeEnd) {
 		color.PrintRedln("Invalid Index, this line does not exist in this file.")
 		return

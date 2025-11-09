@@ -121,7 +121,13 @@ Or you can read a range like this:
 3     | To the end of a file.
 [File] Ned >>
 ```
-This command will delete a specified line.
+This command will delete either a specified line, or a range of lines.
+```bash
+[File] Ned >> d 1 3 
+[File] Ned >> r
+1     | To the end of a file.
+[File] Ned >> 
+```
 
 ### Write
 ```bash
