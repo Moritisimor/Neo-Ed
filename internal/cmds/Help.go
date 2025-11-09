@@ -33,6 +33,12 @@ func PrintHelp() {
 	color.PrintGreenln("It will only take one argument, which is the number of the line you want to edit.")
 	color.PrintMagentaln("Usage: e <Line>")
 
+	color.PrintBlueln("\n== d ==")
+	color.PrintGreenln("This command is used for deleting existing lines.")
+	color.PrintGreenln("It will only take one argument, the number of the line you want to delete.")
+	color.PrintGreenln("However, deleting ranges of lines is in planning.")
+	color.PrintMagentaln("Usage: d <Line>")
+
 	color.PrintBlueln("\n== q ==")
 	color.PrintGreenln("This command is used for exiting Neo-Ed.")
 	color.PrintMagentaln("Usage: q")

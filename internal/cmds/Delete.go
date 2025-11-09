@@ -9,7 +9,7 @@ import (
 
 func Delete(buf *[]string, args []string) {
 	if len(args) < 1 {
-		color.PrintRedln("Usage: d <Line> || d <From> <To>")
+		color.PrintRedln("Usage: d <Line>")
 	}
 
 	index, err := strconv.ParseInt(args[0], 0, 32)

@@ -112,6 +112,17 @@ Or you can read a range like this:
 [File] Ned >>
 ```
 
+### Delete
+```bash
+[File] Ned >> d 2
+[File] Ned >> r
+1     | This is a simple demonstration
+2     | You use it to append text
+3     | To the end of a file.
+[File] Ned >>
+```
+This command will delete a specified line.
+
 ### Write
 ```bash
 [File] Ned >> w
