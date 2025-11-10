@@ -11,6 +11,7 @@ import (
 func Delete(buf *[]string, args []string) {
 	if len(args) < 1 {
 		color.PrintRedln("Usage: d <Line>")
+		return
 	}
 
 	var rangeEnd, rangeStart int
