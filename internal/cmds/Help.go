@@ -9,7 +9,7 @@ func PrintHelp() {
 	color.PrintBlueln("It is implemented from scratch and written in Go.")
 	color.PrintBlueln("Hint: <Parameter> means required, ?<Parameter>? means optional.")
 	color.PrintBlueln("For more info visit https://github.com/Moritisimor/Neo-Ed")
-	
+
 	color.PrintBlueln("\n== a ==")
 	color.PrintGreenln("This command will append Text to the tail of a file.")
 	color.PrintMagentaln("Usage: a")
@@ -27,6 +27,10 @@ func PrintHelp() {
 	color.PrintBlueln("\n== x ==")
 	color.PrintGreenln("This command can be used for executing programs from within the editor.")
 	color.PrintMagentaln("Usage: x <Program> ?<Arguments>?")
+
+	color.PrintBlueln("\n== i ==")
+	color.PrintGreenln("This command can be used for inserting text between existing lines in a file.")
+	color.PrintMagentaln("Usage: i <Line>")
 
 	color.PrintBlueln("\n== e ==")
 	color.PrintGreenln("This command is used for editing existing lines within a file.")

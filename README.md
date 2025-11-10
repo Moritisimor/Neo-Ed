@@ -7,10 +7,9 @@ This project aims to create an editor which is fully open source, easy to use an
 In its core, it works a bit like a shell, where it takes commands and arguments and does something based on the input, except it doesn't use those commands to directly interact with the OS, but to read and manipulate files.
 
 ## Curent Version
-The current version is ```v0.9.1```
+The current version is ```v1.0.0```
 
 ## Planned features
-- Add an insert command for inserting text between lines
 - Add a find command for finding text
 - Add a replace command for replacing text with other text
 
@@ -128,6 +127,21 @@ This command will delete either a specified line, or a range of lines.
 1     | To the end of a file.
 [File] Ned >> 
 ```
+
+### Insert
+```bash
+[File] Ned >> i 2
+INSERT 2 >> This is inserted text.
+INSERT 2 >> .
+[File] Ned >> r
+1     | This is a simple demonstration
+2     | This is inserted text.
+3     | For the append command!
+4     | You use it to append text
+5     | To the end of a file.
+[File] Ned >>
+```
+This command can be used for inserting text between lines. Just like the append command, it uses a . as its termination symbol.
 
 ### Write
 ```bash
