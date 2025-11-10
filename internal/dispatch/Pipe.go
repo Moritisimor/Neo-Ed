@@ -25,6 +25,9 @@ func Pipe(buf *[]string, args []string, fileName string) {
 	case "w":
 		cmds.Write(buf, fileName)
 
+	case "i":
+		cmds.Insert(buf, args[1:])
+
 	case "e":
 		cmds.Edit(buf, args)
 

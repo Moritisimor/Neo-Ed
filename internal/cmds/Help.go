@@ -28,6 +28,10 @@ func PrintHelp() {
 	color.PrintGreenln("This command can be used for executing programs from within the editor.")
 	color.PrintMagentaln("Usage: x <Program> ?<Arguments>?")
 
+	color.PrintBlueln("\n== i ==")
+	color.PrintGreenln("This command can be used for inserting text between existing lines in a file.")
+	color.PrintMagentaln("Usage: i <Line>")
+
 	color.PrintBlueln("\n== e ==")
 	color.PrintGreenln("This command is used for editing existing lines within a file.")
 	color.PrintGreenln("It will only take one argument, which is the number of the line you want to edit.")
