@@ -31,11 +31,14 @@ func Pipe(buf *[]string, args []string, fileName string) {
 		case "e":
 			cmds.Edit(buf, args)
 
+		case "f":
+			cmds.Find(buf, args[1:])
+
 		case "d":
 			cmds.Delete(buf, args[1:])
 
 		case "x":
-			cmds.Execute(args)
+			cmds.Execute(args[1:])
 
 		case "clear", "clr":
 			cmds.Clear()

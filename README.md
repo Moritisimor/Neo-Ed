@@ -7,10 +7,10 @@ This project aims to create an editor which is fully open source, easy to use an
 In its core, it works a bit like a shell, where it takes commands and arguments and does something based on the input, except it doesn't use those commands to directly interact with the OS, but to read and manipulate files.
 
 ## Curent Version
-The current version is ```v1.0.0```
+The current version is ```v1.1.0```
 
 ## Planned features
-- Add a find command for finding text
+- Add a simple syntax-highlighting system
 - Add a replace command for replacing text with other text
 
 ## How to compile
@@ -142,6 +142,17 @@ INSERT 2 >> .
 [File] Ned >>
 ```
 This command can be used for inserting text between lines. Just like the append command, it uses a . as its termination symbol.
+
+### Find
+```bash
+[File] Ned >> f This
+Match in line 1
+1     | This is a simple demonstration
+Match in line 2
+2     | This is inserted text.
+2 Matches.
+[File] Ned >> 
+```
 
 ### Write
 ```bash
