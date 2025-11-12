@@ -23,6 +23,7 @@ func PrintFileLine(line int, lineContent string) {
 		return
 	}
 
+	// If your file is larger than this, what are you even doing?
 	if line < 100000 {
 		fmt.Printf("%d | %s\n", line, lineContent)
 		return

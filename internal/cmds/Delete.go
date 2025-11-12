@@ -19,6 +19,7 @@ func Delete(buf *[]string, args []string) {
 		num, err := strconv.ParseInt(arg, 0, 32)
 		if err != nil {
 			color.PrintRedln(fmt.Sprintf("Expected a number, got '%s' instead.", args[0]))
+			return
 		}
 
 		if i == 0 {

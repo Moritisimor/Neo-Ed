@@ -11,6 +11,7 @@ import (
 	"github.com/Moritisimor/Neo-Ed/internal/dispatch"
 )
 
+// Neo-Ed is an ed-like text-editor, and this is its main package.
 func main() {
 	if len(os.Args) < 2 {
 		color.PrintBlueln("Usage: ned <Target File>")

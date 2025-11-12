@@ -24,9 +24,12 @@ func Find(buf *[]string, args []string) {
 		}
 	}
 
-	if matches == 0 {
+	switch matches {
+	case 0:
 		color.PrintYellowln("No Matches!")
-	} else {
+	case 1:
+		color.PrintGreenln("1 Match")
+	default:
 		color.PrintGreenln(fmt.Sprintf("%d Matches.", matches))
 	}
 }

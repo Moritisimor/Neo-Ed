@@ -18,6 +18,7 @@ func Insert(buf *[]string, args []string) {
 	index, err := strconv.ParseInt(args[0], 0, 32)
 	if err != nil {
 		color.PrintRedln(fmt.Sprintf("Expected a number, got '%s' instead.", args[0]))
+		return
 	}
 
 	if int(index) > len(*buf) {
