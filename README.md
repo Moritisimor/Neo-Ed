@@ -7,7 +7,7 @@ This project aims to create an editor which is fully open source, easy to use an
 In its core, it works a bit like a shell, where it takes commands and arguments and does something based on the input, except it doesn't use those commands to directly interact with the OS, but to read and manipulate files.
 
 ## Curent Version
-The current version is ```v1.1.0```
+The current version is ```v1.2.0```
 
 ## Planned features
 - Add a simple syntax-highlighting system
