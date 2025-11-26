@@ -41,7 +41,7 @@ func main() {
 		parts := strings.Split(strings.TrimSpace(rawCmd), " ")
 		if parts[0] == "q" {
 			if modified {
-				color.PrintBlueln("Cannot exit as the buffer is modified. Save changes using 'w' or force quit using 'q!'")
+				color.PrintRedln("Cannot exit as the buffer is modified. Save changes using 'w' or force quit using 'q!'")
 				continue
 			} else {
 				color.PrintBlueln("Bye!")
