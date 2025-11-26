@@ -8,7 +8,7 @@ import (
 	"github.com/Moritisimor/EpsilonFetch/pkg/color"
 )
 
-func Write(buf *[]string, fileName string) {
+func Write(buf *[]string, fileName string, modified *bool) {
 	bufAsString := strings.Join(*buf, "\n")
 	err := os.WriteFile(fileName, []byte(bufAsString), 0755)
 	if err != nil {
@@ -17,4 +17,5 @@ func Write(buf *[]string, fileName string) {
 	}
 
 	color.PrintGreenln(fmt.Sprintf("Successfully wrote buffer to '%s'", fileName))
+	*modified = false
 }

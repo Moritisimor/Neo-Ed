@@ -8,13 +8,13 @@ import (
 	"github.com/Moritisimor/Neo-Ed/internal/helpers"
 )
 
-func Edit(buf *[]string, args []string) {
-	if len(args) < 2 {
+func Edit(buf *[]string, args []string, modified *bool) {
+	if len(args) < 1 {
 		color.PrintBlueln("Usage: e <line>")
 		return
 	}
 
-	line, err := strconv.ParseInt(args[1], 0, 64)
+	line, err := strconv.ParseInt(args[0], 0, 64)
 	if err != nil {
 		color.PrintRedln(fmt.Sprintf("Expected a number, got '%s' instead", args[1]))
 		return
@@ -31,7 +31,7 @@ func Edit(buf *[]string, args []string) {
 	}
 
 	r := helpers.CreateReader(color.SprintMagenta(fmt.Sprintf("EDIT %d >> ", line)))
-	r.WriteStdin([]byte((*buf)[line - 1]))
+	r.WriteStdin([]byte((*buf)[line-1]))
 
 	text, readErr := r.Readline()
 	if readErr != nil {
@@ -39,5 +39,6 @@ func Edit(buf *[]string, args []string) {
 		return
 	}
 
-	(*buf)[line - 1] = text
+	(*buf)[line-1] = text
+	*modified = true
 }

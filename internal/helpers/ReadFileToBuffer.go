@@ -5,15 +5,13 @@ import (
 	"os"
 )
 
-func ReadFileToBuffer(file *os.File) (buffer []string, length int) {
+func ReadFileToBuffer(file *os.File) []string {
 	scanner := bufio.NewScanner(file)
 	var buf []string
-	l := 0
 
 	for scanner.Scan() {
-		l++
 		buf = append(buf, scanner.Text())
 	}
 
-	return buf, l
+	return buf
 }

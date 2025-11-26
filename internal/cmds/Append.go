@@ -5,7 +5,8 @@ import (
 	"github.com/Moritisimor/Neo-Ed/internal/helpers"
 )
 
-func Append(buf *[]string) {
+func Append(buf *[]string, modified *bool) {
+	*modified = true
 	r := helpers.CreateReader(color.SprintMagenta("APPEND >> "))
 	lines := helpers.StartWriteLoop(r)
 	(*buf) = append((*buf), lines...)

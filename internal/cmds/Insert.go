@@ -9,7 +9,7 @@ import (
 	"github.com/Moritisimor/Neo-Ed/internal/helpers"
 )
 
-func Insert(buf *[]string, args []string) {
+func Insert(buf *[]string, args []string, modified *bool) {
 	if len(args) < 1 {
 		color.PrintRedln("Usage: i <Line>")
 		return
@@ -30,4 +30,5 @@ func Insert(buf *[]string, args []string) {
 	lines := helpers.StartWriteLoop(r)
 
 	*buf = slices.Insert(*buf, int(index) - 1, lines...)
+	*modified = true
 }

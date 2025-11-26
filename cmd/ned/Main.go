@@ -25,9 +25,10 @@ func main() {
 		return
 	}
 
-	writeBuf, initSize := helpers.ReadFileToBuffer(openedFile)
-	color.PrintBlueln(fmt.Sprintf("Opened %d lines.", initSize))
 
+	writeBuf := helpers.ReadFileToBuffer(openedFile)
+	color.PrintBlueln(fmt.Sprintf("Opened %d lines.", len(writeBuf)))
+	modified := false
 	reader := helpers.CreateReader(color.SprintBlue(fmt.Sprintf("[%s] Ned >> ", fileName)))
 
 	for {
@@ -39,10 +40,20 @@ func main() {
 
 		parts := strings.Split(strings.TrimSpace(rawCmd), " ")
 		if parts[0] == "q" {
+			if modified {
+				color.PrintBlueln("Cannot exit as the buffer is modified. Save changes using 'w' or force quit using 'q!'")
+				continue
+			} else {
+				color.PrintBlueln("Bye!")
+				return
+			}
+		}
+
+		if parts[0] == "q!" {
 			color.PrintBlueln("Bye!")
 			return
 		}
 
-		dispatch.Pipe(&writeBuf, parts, fileName)
+		dispatch.Pipe(&writeBuf, parts, fileName, &modified)
 	}
 }

@@ -8,7 +8,7 @@ import (
 	"github.com/Moritisimor/EpsilonFetch/pkg/color"
 )
 
-func Delete(buf *[]string, args []string) {
+func Delete(buf *[]string, args []string, modified *bool) {
 	if len(args) < 1 {
 		color.PrintRedln("Usage: d <Line>")
 		return
@@ -46,4 +46,5 @@ func Delete(buf *[]string, args []string) {
 	}
 
 	*buf = slices.Delete(*buf, rangeStart - 1, rangeEnd)
+	*modified = true
 }
