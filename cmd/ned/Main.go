@@ -7,7 +7,6 @@ import (
 
 	"github.com/Moritisimor/EpsilonFetch/pkg/color"
 	"github.com/Moritisimor/Neo-Ed/internal/helpers"
-	"github.com/Moritisimor/Neo-Ed/internal/sigwatchers"
 	"github.com/Moritisimor/Neo-Ed/internal/dispatch"
 )
 
@@ -29,7 +28,6 @@ func main() {
 	writeBuf, initSize := helpers.ReadFileToBuffer(openedFile)
 	color.PrintBlueln(fmt.Sprintf("Opened %d lines.", initSize))
 
-	sigwatchers.StartSigTermWatcher()
 	reader := helpers.CreateReader(color.SprintBlue(fmt.Sprintf("[%s] Ned >> ", fileName)))
 
 	for {
