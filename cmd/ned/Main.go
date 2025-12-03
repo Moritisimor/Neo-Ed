@@ -6,8 +6,9 @@ import (
 	"strings"
 
 	"github.com/Moritisimor/EpsilonFetch/pkg/color"
-	"github.com/Moritisimor/Neo-Ed/internal/helpers"
 	"github.com/Moritisimor/Neo-Ed/internal/dispatch"
+	"github.com/Moritisimor/Neo-Ed/internal/helpers"
+	"github.com/Moritisimor/Neo-Ed/internal/cmds"
 )
 
 // Neo-Ed is an ed-like text-editor, and this is its main package.
@@ -50,6 +51,15 @@ func main() {
 		}
 
 		if parts[0] == "q!" {
+			color.PrintBlueln("Bye!")
+			return
+		}
+
+		if parts[0] == "wq" {
+			if cmds.Write(&writeBuf, fileName, &modified) != nil {
+				continue
+			}
+
 			color.PrintBlueln("Bye!")
 			return
 		}
