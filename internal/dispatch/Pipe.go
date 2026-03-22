@@ -16,28 +16,31 @@ func Pipe(buf *[]string, args []string, fileName string, modified *bool) {
 	case "help", "h":
 		cmds.PrintHelp()
 
-	case "r":
+	case "r", "read":
 		cmds.Read(buf, args[1:])
 
-	case "a":
+	case "a", "append":
 		cmds.Append(buf, modified)
 
-	case "w":
+	case "w", "write":
 		cmds.Write(buf, fileName, modified)
 
-	case "i":
+	case "i", "insert":
 		cmds.Insert(buf, args[1:], modified)
 
-	case "e":
+	case "e", "edit":
 		cmds.Edit(buf, args[1:], modified)
 
-	case "f":
+	case "f", "find":
 		cmds.Find(buf, args[1:])
 
-	case "d":
+	case "p", "replace":
+		cmds.Replace(buf, args[1:], modified)
+
+	case "d", "delete":
 		cmds.Delete(buf, args[1:], modified)
 
-	case "x":
+	case "x", "execute":
 		cmds.Execute(args[1:])
 
 	case "clear", "clr":

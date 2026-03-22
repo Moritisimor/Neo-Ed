@@ -7,11 +7,10 @@ This project aims to create an editor which is fully open source, easy to use an
 In its core, it works a bit like a shell, where it takes commands and arguments and does something based on the input, except it doesn't use those commands to directly interact with the OS, but to read and manipulate files.
 
 ## Curent Version
-The current version is ```v1.2.0```
+The current version is ```v1.4.0```
 
 ## Planned features
 - Add a simple syntax-highlighting system
-- Add a replace command for replacing text with other text
 
 ## How to compile
 To compile Neo-Ed from source you will need a Go-Compiler, preferably the latest. You can download one [here](https://go.dev/ "Official Go Website")
@@ -153,6 +152,19 @@ Match in line 2
 2 Matches.
 [File] Ned >> 
 ```
+
+### Replace
+```bash
+[File] Ned >> p This That
+[File] Ned >> r
+1     | That is a simple demonstration
+2     | That is inserted text.
+3     | For the append command!
+4     | You use it to append text
+5     | To the end of a file.
+[File] Ned >>
+```
+Replaces Text with other Text
 
 ### Write
 ```bash

@@ -32,6 +32,10 @@ func PrintHelp() {
 	color.PrintGreenln("This command is used for finding text within a file.")
 	color.PrintMagentaln("Usage: f <Text>")
 
+	color.PrintBlueln("\n== p ==")
+	color.PrintGreenln("This command is used for replacing text with other text.")
+	color.PrintMagentaln("Usage: p <TextToReplace> <TextToReplaceWith>")
+
 	color.PrintBlueln("\n== i ==")
 	color.PrintGreenln("This command can be used for inserting text between existing lines in a file.")
 	color.PrintMagentaln("Usage: i <Line>")
