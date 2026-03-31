@@ -4,6 +4,10 @@ The UNIX Editor Ed, but modernized.
 ## What is this project about?
 This project aims to create an editor which is fully open source, easy to use and Ed-Like. As such, it is released under the MIT License and command- and line-based.
 
+It was inspired by [this guy](https://github.com/RobertFlexx), who, at the time, wrote a small, ed-like text editor for me, which I really liked, so I decided to write my own.
+
+He also wrote one of his own, which you can visit [here](https://github.com/RobertFlexx/tedit).
+
 In its core, it works a bit like a shell, where it takes commands and arguments and does something based on the input, except it doesn't use those commands to directly interact with the OS, but to read and manipulate files.
 
 ## Curent Version
