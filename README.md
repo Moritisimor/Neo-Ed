@@ -11,7 +11,7 @@ He also wrote one of his own, which you can visit [here](https://github.com/Robe
 In its core, it works a bit like a shell, where it takes commands and arguments and does something based on the input, except it doesn't use those commands to directly interact with the OS, but to read and manipulate files.
 
 ## Curent Version
-The current version is ```v1.4.1```
+The current version is ```v1.5.0```
 
 ## Planned features
 - Add a simple syntax-highlighting system
