@@ -31,7 +31,6 @@ func main() {
 		return
 	}
 
-
 	writeBuf := helpers.ReadFileToBuffer(openedFile)
 	color.PrintBlueln(fmt.Sprintf("Opened %d lines.", len(writeBuf)))
 	modified := false
@@ -40,7 +39,7 @@ func main() {
 	for {
 		rawCmd, readErr := reader.Readline()
 		if readErr != nil {
-			color.PrintBlueln("Input interrupted. Try again.")
+			color.PrintBlueln("Input interrupted. Try again or enter the 'q' command to quit or 'q!' to force quit.")
 			continue
 		}
 
