@@ -15,7 +15,12 @@ import (
 func main() {
 	if len(os.Args) < 2 {
 		color.PrintBlueln("Usage: ned <Target File>")
-		color.PrintGreenln("Or run the 'h' command!")
+		color.PrintGreenln("Or add the '--help' flag!")
+		os.Exit(1)
+	}
+
+	if os.Args[1] == "--help" {
+		cmds.PrintHelp()
 		return
 	}
 
