@@ -43,7 +43,7 @@ func Pipe(buf *[]string, args []string, fileName string, modified *bool) {
 	case "x", "execute":
 		cmds.Execute(args[1:])
 
-	case "clear", "clr":
+	case "clear", "clr", "c":
 		cmds.Clear()
 	}
 }
