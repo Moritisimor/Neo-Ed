@@ -39,7 +39,12 @@ func main() {
 	for {
 		rawCmd, readErr := reader.Readline()
 		if readErr != nil {
-			color.PrintBlueln("Input interrupted. Try again or enter the 'q' command to quit or 'q!' to force quit.")
+			fmt.Printf(
+				"%s %s\n",
+				color.SprintRed("Input interrupted."),
+				color.SprintGreen("Try again or enter 'q' to quit or 'q!' to force quit."),
+			)
+
 			continue
 		}
 
@@ -49,13 +54,13 @@ func main() {
 				color.PrintRedln("Cannot exit as the buffer is modified. Save changes using 'w' or force quit using 'q!'")
 				continue
 			} else {
-				color.PrintBlueln("Bye!")
+				color.PrintGreenln("Bye!")
 				return
 			}
 		}
 
 		if parts[0] == "q!" {
-			color.PrintBlueln("Bye!")
+			color.PrintGreenln("Bye!")
 			return
 		}
 
@@ -64,7 +69,7 @@ func main() {
 				continue
 			}
 
-			color.PrintBlueln("Bye!")
+			color.PrintGreenln("Bye!")
 			return
 		}
 
