@@ -9,26 +9,24 @@ import (
 	"github.com/Moritisimor/Neo-Ed/internal/helpers"
 )
 
-func Insert(buf *[]string, args []string, modified *bool) {
+func Insert(state *EditorState, args []string) error {
 	if len(args) < 1 {
-		color.PrintRedln("Usage: i <Line>")
-		return
+		return fmt.Errorf("Usage: i <Line>")
 	}
 
 	index, err := strconv.ParseInt(args[0], 0, 32)
 	if err != nil {
-		color.PrintRedln(fmt.Sprintf("Expected a number, got '%s' instead.", args[0]))
-		return
+		return fmt.Errorf("Expected a number, got '%s' instead.", args[0])
 	}
 
-	if int(index) > len(*buf) {
-		color.PrintRedln("Invalid Index, this line does not exist in this file.")
-		return
+	if int(index) > len(state.Buffer) {
+		return fmt.Errorf("Invalid Index, this line does not exist in this file.")
 	}
 
 	r := helpers.CreateReader(color.SprintMagenta(fmt.Sprintf("INSERT %d >> ", index)))
 	lines := helpers.StartWriteLoop(r)
 
-	*buf = slices.Insert(*buf, int(index) - 1, lines...)
-	*modified = true
+	state.Buffer = slices.Insert(state.Buffer, int(index) - 1, lines...)
+	state.Modified = true
+	return nil
 }

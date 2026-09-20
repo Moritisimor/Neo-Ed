@@ -4,14 +4,11 @@ import (
 	"fmt"
 	"os"
 	"os/exec"
-
-	"github.com/Moritisimor/EpsilonFetch/pkg/color"
 )
 
-func Execute(args []string) {
+func Execute(_ *EditorState, args []string) error {
 	if len(args) < 1 {
-		color.PrintRedln("Usage: x <Command> ?<Args>?")
-		return
+		return fmt.Errorf("Usage: x <Command> ?<Args>?")
 	}
 
 	cmd := exec.Command(args[0], args[1:]...)
@@ -19,8 +16,5 @@ func Execute(args []string) {
 	cmd.Stderr = os.Stderr
 	cmd.Stdin = os.Stdin
 	
-	runErr := cmd.Run()
-	if runErr != nil {
-		color.PrintRedln(fmt.Sprintf("Executing '%s' failed.\nError: %s", args[0], runErr.Error()))
-	}
+	return cmd.Run()
 }

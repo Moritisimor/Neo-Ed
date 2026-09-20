@@ -6,9 +6,9 @@ import (
 	"strings"
 
 	"github.com/Moritisimor/EpsilonFetch/pkg/color"
+	"github.com/Moritisimor/Neo-Ed/internal/cmds"
 	"github.com/Moritisimor/Neo-Ed/internal/dispatch"
 	"github.com/Moritisimor/Neo-Ed/internal/helpers"
-	"github.com/Moritisimor/Neo-Ed/internal/cmds"
 )
 
 // Neo-Ed is an ed-like text-editor, and this is its main package.
@@ -20,7 +20,7 @@ func main() {
 	}
 
 	if os.Args[1] == "--help" {
-		cmds.PrintHelp()
+		cmds.PrintHelp(&cmds.EditorState{}, []string{})
 		return
 	}
 
@@ -33,8 +33,8 @@ func main() {
 
 	writeBuf := helpers.ReadFileToBuffer(openedFile)
 	color.PrintBlueln(fmt.Sprintf("Opened %d lines.", len(writeBuf)))
-	modified := false
 	reader := helpers.CreateReader(color.SprintBlue(fmt.Sprintf("[%s] Ned >> ", fileName)))
+	editorState := cmds.NewEditorState(writeBuf, fileName)
 
 	for {
 		rawCmd, readErr := reader.Readline()
@@ -48,9 +48,9 @@ func main() {
 			continue
 		}
 
-		parts := strings.Split(strings.TrimSpace(rawCmd), " ")
+		parts := strings.Fields(rawCmd)
 		if parts[0] == "q" {
-			if modified {
+			if editorState.Modified {
 				color.PrintRedln("Cannot exit as the buffer is modified. Save changes using 'w' or force quit using 'q!'")
 				continue
 			} else {
@@ -65,7 +65,7 @@ func main() {
 		}
 
 		if parts[0] == "wq" {
-			if cmds.Write(&writeBuf, fileName, &modified) != nil {
+			if cmds.Write(editorState, parts) != nil {
 				continue
 			}
 
@@ -73,6 +73,8 @@ func main() {
 			return
 		}
 
-		dispatch.Pipe(&writeBuf, parts, fileName, &modified)
+		if err := dispatch.RunCommand(editorState, parts); err != nil {
+			color.PrintRedln(err.Error())
+		}
 	}
 }

@@ -8,37 +8,34 @@ import (
 	"github.com/Moritisimor/Neo-Ed/internal/helpers"
 )
 
-func Edit(buf *[]string, args []string, modified *bool) {
+func Edit(state *EditorState, args []string) error {
 	if len(args) < 1 {
-		color.PrintBlueln("Usage: e <line>")
-		return
+		return fmt.Errorf("Usage: e <line>")
 	}
 
 	line, err := strconv.ParseInt(args[0], 0, 64)
 	if err != nil {
-		color.PrintRedln(fmt.Sprintf("Expected a number, got '%s' instead", args[1]))
-		return
+		return fmt.Errorf("Expected a number, got '%s' instead", args[1])
 	}
 
-	if int(line) > len(*buf) {
-		color.PrintRedln("Invalid Index, this line does not exist in this file.")
-		return
+	if int(line) > len(state.Buffer) {
+		return fmt.Errorf("Invalid Index, this line does not exist in this file.")
+		
 	}
 
 	if line < 1 {
-		color.PrintRedln("Cannot access indices which are below 1!")
-		return
+		return fmt.Errorf("Cannot access indices which are below 1!")
 	}
 
 	r := helpers.CreateReader(color.SprintMagenta(fmt.Sprintf("EDIT %d >> ", line)))
-	r.WriteStdin([]byte((*buf)[line-1]))
+	r.WriteStdin([]byte(state.Buffer[line-1]))
 
 	text, readErr := r.Readline()
 	if readErr != nil {
-		color.PrintRedln("Input interrupted.")
-		return
+		return fmt.Errorf("Input interrupted.")
 	}
 
-	(*buf)[line-1] = text
-	*modified = true
+	state.Buffer[line-1] = text
+	state.Modified = true
+	return nil
 }

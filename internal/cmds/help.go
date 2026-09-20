@@ -1,8 +1,10 @@
 package cmds
 
-import "github.com/Moritisimor/EpsilonFetch/pkg/color"
+import (
+	"github.com/Moritisimor/EpsilonFetch/pkg/color"
+)
 
-func PrintHelp() {
+func PrintHelp(_ *EditorState, _ []string) error {
 	color.PrintRainbowln("==== HELP ====")
 
 	color.PrintBlueln("Neo-Ed is an unofficial evolution of the original UNIX Text Editor ed.")
@@ -59,4 +61,5 @@ func PrintHelp() {
 	color.PrintMagentaln("Usage: clear")
 
 	color.PrintRainbowln("==== HELP ====")
+	return nil
 }

@@ -4,22 +4,18 @@ import (
 	"fmt"
 	"slices"
 	"strconv"
-
-	"github.com/Moritisimor/EpsilonFetch/pkg/color"
 )
 
-func Delete(buf *[]string, args []string, modified *bool) {
+func Delete(state *EditorState, args []string) error {
 	if len(args) < 1 {
-		color.PrintRedln("Usage: d <Line>")
-		return
+		return fmt.Errorf("Invalid args! Usage: d <Line>")
 	}
 
 	var rangeEnd, rangeStart int
 	for i, arg := range(args) {
 		num, err := strconv.ParseInt(arg, 0, 32)
 		if err != nil {
-			color.PrintRedln(fmt.Sprintf("Expected a number, got '%s' instead.", args[0]))
-			return
+			return fmt.Errorf("Expected a number, got '%s' instead.", args[0])
 		}
 
 		if i == 0 {
@@ -31,20 +27,18 @@ func Delete(buf *[]string, args []string, modified *bool) {
 	}
 
 	if rangeEnd < 1 || rangeStart < 1 {
-		color.PrintRedln("Index may not be smaller than 1!")
-		return
+		return fmt.Errorf("Index may not be smaller than 1!")
 	}
 
 	if rangeEnd < rangeStart {
-		color.PrintRedln("The range end may not be smaller than the range start!")
-		return
+		return fmt.Errorf("The range end may not be smaller than the range start!")
 	}
 
-	if len(*buf) < int(rangeStart) || len(*buf) < int(rangeEnd) {
-		color.PrintRedln("Invalid Index, this line does not exist in this file.")
-		return
+	if len(state.Buffer) < int(rangeStart) || len(state.Buffer) < int(rangeEnd) {
+		return fmt.Errorf("Invalid Index, this line does not exist in this file.")
 	}
 
-	*buf = slices.Delete(*buf, rangeStart - 1, rangeEnd)
-	*modified = true
+	state.Buffer = slices.Delete(state.Buffer, rangeStart - 1, rangeEnd)
+	state.Modified = true
+	return nil
 }

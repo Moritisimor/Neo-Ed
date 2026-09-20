@@ -8,26 +8,25 @@ import (
 	"github.com/Moritisimor/Neo-Ed/internal/helpers"
 )
 
-func Read(buf *[]string, args []string) {
-	if len(*buf) < 1 {
+func Read(state *EditorState, args []string) error {
+	if len(state.Buffer) == 0 {
 		color.PrintYellowln("Empty File!")
-		return
+		return nil
 	}
 
-	if len(args) < 1 {
-		for i, l := range(*buf) {
+	if len(args) == 0 {
+		for i, l := range state.Buffer {
 			helpers.PrintFileLine(i + 1, l)
 		}
 
-		return
+		return nil
 	}
 
 	var rangeEnd, rangeStart int
-	for i, arg := range(args) {
+	for i, arg := range state.Buffer {
 		parsedArg, parseErr := strconv.ParseInt(arg, 0, 64)
 		if parseErr != nil {
-			color.PrintRedln(fmt.Sprintf("Expected a number, got '%s' instead", arg))
-			return
+			return fmt.Errorf("Expected a number, got '%s' instead", arg)
 		}
 
 		if i == 0 {
@@ -41,21 +40,20 @@ func Read(buf *[]string, args []string) {
 	}
 
 	if rangeStart < 1 || rangeEnd < 1 {
-		color.PrintRedln("Index may not be smaller than 1!")
-		return
+		return fmt.Errorf("Index may not be smaller than 1!")
 	}
 
 	if rangeEnd < rangeStart {
-		color.PrintRedln("The range end may not be smaller than the range start!")
-		return
+		return fmt.Errorf("The range end may not be smaller than the range start!")
 	}
 
-	if len(*buf) < rangeStart || len(*buf) < rangeEnd {
-		color.PrintRedln("Invalid Index, this line does not exist in this file.")
-		return
+	if len(state.Buffer) < rangeStart || len(state.Buffer) < rangeEnd {
+		return fmt.Errorf("Invalid Index, this line does not exist in this file.")
 	}
 
 	for i := rangeStart - 1; i <= rangeEnd - 1; i++ {
-		helpers.PrintFileLine(i + 1, (*buf)[i])
+		helpers.PrintFileLine(i + 1, state.Buffer[i])
 	}
+
+	return nil
 }

@@ -1,23 +1,21 @@
 package cmds
 
 import (
+	"fmt"
 	"strings"
-
-	"github.com/Moritisimor/EpsilonFetch/pkg/color"
 )
 
-func Replace(buf *[]string, args []string, modified *bool) {
+func Replace(state *EditorState, args []string) error {
 	if len(args) < 2 {
-		color.PrintRedln("Usage: p <replacer> <replacee>")
-		return
+		return fmt.Errorf("Usage: p <replacer> <replacee>")
 	}
 
-	*modified = true
+	state.Modified = true
 
 	replacee := args[0]
 	replacer := args[1]
 
-	for i, l := range *buf {
+	for i, l := range state.Buffer {
 		temp := []string{}
 		for i := range strings.SplitSeq(l, " ") {
 			if i == replacee {
@@ -27,6 +25,8 @@ func Replace(buf *[]string, args []string, modified *bool) {
 			}
 		}
 
-		(*buf)[i] = strings.Join(temp, " ")
+		state.Buffer[i] = strings.Join(temp, " ")
 	}
+
+	return nil
 }

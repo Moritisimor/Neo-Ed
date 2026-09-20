@@ -5,9 +5,10 @@ import (
 	"github.com/Moritisimor/Neo-Ed/internal/helpers"
 )
 
-func Append(buf *[]string, modified *bool) {
-	*modified = true
+func Append(state *EditorState, _ []string) error {
+	state.Modified = true
 	r := helpers.CreateReader(color.SprintMagenta("APPEND >> "))
 	lines := helpers.StartWriteLoop(r)
-	(*buf) = append((*buf), lines...)
+	state.Buffer = append(state.Buffer, lines...)
+	return nil
 }
