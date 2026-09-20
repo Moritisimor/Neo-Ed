@@ -48,6 +48,10 @@ func main() {
 			continue
 		}
 
+		if strings.TrimSpace(rawCmd) == "" {
+			continue
+		}
+
 		parts := strings.Fields(rawCmd)
 		if parts[0] == "q" {
 			if editorState.Modified {
