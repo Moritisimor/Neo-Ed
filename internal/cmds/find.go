@@ -15,10 +15,10 @@ func Find(state *EditorState, args []string) error {
 
 	matches := 0
 	text := strings.TrimSpace(strings.Join(args, " "))
-	for i, line := range(state.Buffer) {
+	for i, line := range state.Buffer {
 		if strings.Contains(line, text) {
-			color.PrintGreenln(fmt.Sprintf("Match in line %d", i + 1))
-			helpers.PrintFileLine(i + 1, line)
+			color.PrintGreenln(fmt.Sprintf("Match in line %d", i+1))
+			helpers.PrintFileLine(i+1, line)
 			matches++
 		}
 	}

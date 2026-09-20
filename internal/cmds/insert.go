@@ -26,7 +26,7 @@ func Insert(state *EditorState, args []string) error {
 	r := helpers.CreateReader(color.SprintMagenta(fmt.Sprintf("INSERT %d >> ", index)))
 	lines := helpers.StartWriteLoop(r)
 
-	state.Buffer = slices.Insert(state.Buffer, int(index) - 1, lines...)
+	state.Buffer = slices.Insert(state.Buffer, int(index)-1, lines...)
 	state.Modified = true
 	return nil
 }

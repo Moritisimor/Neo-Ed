@@ -16,7 +16,7 @@ func Read(state *EditorState, args []string) error {
 
 	if len(args) == 0 {
 		for i, l := range state.Buffer {
-			helpers.PrintFileLine(i + 1, l)
+			helpers.PrintFileLine(i+1, l)
 		}
 
 		return nil
@@ -51,8 +51,8 @@ func Read(state *EditorState, args []string) error {
 		return fmt.Errorf("Invalid Index, this line does not exist in this file.")
 	}
 
-	for i := rangeStart - 1; i <= rangeEnd - 1; i++ {
-		helpers.PrintFileLine(i + 1, state.Buffer[i])
+	for i := rangeStart - 1; i <= rangeEnd-1; i++ {
+		helpers.PrintFileLine(i+1, state.Buffer[i])
 	}
 
 	return nil

@@ -20,7 +20,7 @@ func Edit(state *EditorState, args []string) error {
 
 	if int(line) > len(state.Buffer) {
 		return fmt.Errorf("Invalid Index, this line does not exist in this file.")
-		
+
 	}
 
 	if line < 1 {

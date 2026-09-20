@@ -15,6 +15,6 @@ func Execute(_ *EditorState, args []string) error {
 	cmd.Stdout = os.Stdout
 	cmd.Stderr = os.Stderr
 	cmd.Stdin = os.Stdin
-	
+
 	return cmd.Run()
 }

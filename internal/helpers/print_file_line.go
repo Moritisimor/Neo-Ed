@@ -12,7 +12,7 @@ func PrintFileLine(line int, lineContent string) {
 		fmt.Printf("%d    | %s\n", line, lineContent)
 		return
 	}
-	
+
 	if line < 1000 {
 		fmt.Printf("%d   | %s\n", line, lineContent)
 		return

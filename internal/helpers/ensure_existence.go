@@ -13,7 +13,7 @@ func IsDir(entry *os.File) bool {
 	if err != nil {
 		log.Fatal(err.Error())
 	}
-	
+
 	return info.IsDir()
 }
 

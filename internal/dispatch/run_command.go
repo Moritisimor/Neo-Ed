@@ -2,7 +2,7 @@ package dispatch
 
 import (
 	"fmt"
-	
+
 	"github.com/Moritisimor/Neo-Ed/internal/cmds"
 )
 

@@ -5,16 +5,16 @@ import "os"
 type EditorFunc func(state *EditorState, args []string) error
 
 type EditorState struct {
-	FileName string
-	Buffer 	 []string
-	Modified bool
+	FileName        string
+	Buffer          []string
+	Modified        bool
 	CommandRegistry map[string]EditorFunc
 }
 
 func NewEditorState(buf []string, fileName string) *EditorState {
 	return &EditorState{
 		FileName: fileName,
-		Buffer: buf,
+		Buffer:   buf,
 		Modified: false,
 		CommandRegistry: map[string]EditorFunc{
 			"h": PrintHelp,

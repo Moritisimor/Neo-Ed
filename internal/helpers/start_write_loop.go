@@ -14,7 +14,7 @@ func StartWriteLoop(r *readline.Instance) []string {
 		tempbuf, err := r.Readline()
 		if err != nil {
 			color.PrintRedln("Input interrupted.")
-			return []string {}
+			return []string{}
 		}
 
 		if strings.TrimSpace(tempbuf) == "." {

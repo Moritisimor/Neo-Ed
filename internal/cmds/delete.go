@@ -12,7 +12,7 @@ func Delete(state *EditorState, args []string) error {
 	}
 
 	var rangeEnd, rangeStart int
-	for i, arg := range(args) {
+	for i, arg := range args {
 		num, err := strconv.ParseInt(arg, 0, 32)
 		if err != nil {
 			return fmt.Errorf("Expected a number, got '%s' instead.", args[0])
@@ -38,7 +38,7 @@ func Delete(state *EditorState, args []string) error {
 		return fmt.Errorf("Invalid Index, this line does not exist in this file.")
 	}
 
-	state.Buffer = slices.Delete(state.Buffer, rangeStart - 1, rangeEnd)
+	state.Buffer = slices.Delete(state.Buffer, rangeStart-1, rangeEnd)
 	state.Modified = true
 	return nil
 }

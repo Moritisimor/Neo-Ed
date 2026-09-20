@@ -7,7 +7,7 @@ import (
 )
 
 func CreateReader(prompt string) *readline.Instance {
-	r, err :=  readline.NewEx(&readline.Config {
+	r, err := readline.NewEx(&readline.Config{
 		Prompt: prompt,
 	})
 
